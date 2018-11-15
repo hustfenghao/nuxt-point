@@ -12,7 +12,7 @@ export default {
   name: 'Mypage',
   props: {
     user: {
-      type: String,
+      type: Object,
       required: true,
 
     }
@@ -21,8 +21,9 @@ export default {
   methods: {
     logout: function() {
       firebase.auth().signOut();
-      router.go(-1);
+      this.$router.push('/')
     }
+
   }
 }
 </script>

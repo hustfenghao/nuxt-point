@@ -15,14 +15,28 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.0.0",
     "cross-env": "^5.2.0",
+    "element-ui": "^2.4.9",
     "firebase": "^5.5.8",
     "nuxt": "^2.0.0"
   },
   "devDependencies": {
-    "nodemon": "^1.11.0",
     "babel-eslint": "^8.2.1",
+    "css-loader": "^1.0.1",
     "eslint": "^5.0.1",
     "eslint-loader": "^2.0.0",
-    "eslint-plugin-vue": "^4.0.0"
-  }
+    "eslint-plugin-vue": "^4.0.0",
+    "nodemon": "^1.11.0",
+    "style-loader": "^0.23.1"
+  },
+  "main": ".eslintrc.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hustfenghao/nuxt-point.git"
+  },
+  "keywords": [],
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/hustfenghao/nuxt-point/issues"
+  },
+  "homepage": "https://github.com/hustfenghao/nuxt-point#readme"
 }

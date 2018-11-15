@@ -1,12 +1,31 @@
 <template>
-  <div class="links">
+  <div
+    class="links">
     <Home v-if="!isLogin"/>
     <Mypage
       v-if="isLogin"
       :user="userData"/>
-  </div>
-</template>
+    <div>
+      <h2>
+        客様一覧
+      </h2>
+    </div>
+    <div id="app">
 
+    </div>
+
+
+  </div>
+
+
+  <!-- <div>
+  <h1>1231231</h1>
+  </div> -->
+</template>
+<!-- 引入样式 -->
+<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+<!-- 引入组件库 -->
+<script src="https://unpkg.com/element-ui/lib/index.js"></script>
 <script>
 import Home from '~/components/Home.vue'
 import Mypage from '~/components/Mypage.vue'
@@ -26,7 +45,7 @@ fetch () {
 },
 mounted: function() {
   firebase.auth().onAuthStateChanged(user => {
-    console.log(user);
+    // console.log(user);
     if (user) {
       this.isLogin = true;
       this.userData = user;

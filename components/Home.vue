@@ -9,7 +9,11 @@ export default {
   methods: {
     googleLogin: function() {
       firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-      router.push({ path: 'shop' })
+      console.log(this.isLogin);
+      if(this.isLogin){
+      return redirect('/shop')
+      };
+
     }
   }
 }

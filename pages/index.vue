@@ -13,20 +13,10 @@
           href="https://nuxtjs.org/"
           target="_blank"
           class="button--green">Documentation</a>
-        <a
-          href="https://github.com/nuxt/nuxt.js"
-          target="_blank"
-          class="button--grey">GitHub</a>
 
         <div class="links">
-          <Home v-if="!isLogin"/>
-          <Mypage
-            v-if="isLogin"
-            :user="userData"/>
-        </div>
-        <div v-if="isLogin">
-          <nuxt-link to="/shop">管理画面</nuxt-link>
-
+          <button
+            @click="googleLogin">googleでログイン</button>
         </div>
       </div>
 
@@ -34,39 +24,41 @@
   </section>
 </template>
 
-
-
-<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
-
 <script>
-import Home from '~/components/Home.vue'
-import Mypage from '~/components/Mypage.vue'
+// import Mypage from '~/components/Mypage.vue'
 import Logo from '~/components/Logo.vue'
 import firebase from '@/plugins/firebase'
 export default {
   components: {
     Logo,
-    Home,
-    Mypage
+    // Mypage
   },
-  asyncData (context) {
-   // コンポーネントをロードする前に毎回呼び出されます
-   return { name: 'Hello, World！！', isLogin:false, userData:null}
- },
- fetch () {
-    // `fetch` メソッドはページの描画前にストアを満たすために使用されます
+  data () {
   },
+  // asyncData (context) {
+ //   // コンポーネントをロードする前に毎回呼び出されます
+ //   return { name: 'Hello, World！！', isLogin:false, userData:null}
+ // },
+ // fetch () {
+ //
+ //  },
   mounted: function() {
     firebase.auth().onAuthStateChanged(user => {
-      console.log(user);
       if (user) {
         this.isLogin = true;
         this.userData = user;
+        this.$router.push('/shop')
       } else {
         this.isLogin = false;
         this.userData = null;
+        // console.log(this.isLogin);
       };
     });
+    // console.log(this.isLogin);
+    // console.log("3")
+    // if(this.isLogin){
+    // this.$router.push('/shop')
+    // };
   },
   methods: {
     googleLogin: function() {
