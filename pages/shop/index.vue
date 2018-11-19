@@ -10,32 +10,48 @@
         客様一覧
       </h2>
     </div>
-    <div id="app">
-
+    <div
+    id="app">
+    <el-button type="text" @click="open3">点击打开 Message Box</el-button>
+    <nuxt-link to="/shop/guest">add</nuxt-link>
     </div>
 
 
   </div>
 
 
-  <!-- <div>
-  <h1>1231231</h1>
-  </div> -->
-</template>
-<!-- 引入样式 -->
-<link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
-<!-- 引入组件库 -->
-<script src="https://unpkg.com/element-ui/lib/index.js"></script>
+ </template>
+
 <script>
 import Home from '~/components/Home.vue'
 import Mypage from '~/components/Mypage.vue'
 import firebase from '@/plugins/firebase'
-
+import ElementUI from '@/plugins/element-ui'
 export default {
   components: {
     Home,
     Mypage
   },
+  methods: {
+      open3() {
+        this.$prompt('请输入邮箱', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          inputPattern: /[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/,
+          inputErrorMessage: '邮箱格式不正确'
+        }).then(({ value }) => {
+          this.$message({
+            type: 'success',
+            message: '你的邮箱是: ' + value
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });
+        });
+      }
+    },
 asyncData (context) {
    // コンポーネントをロードする前に毎回呼び出されます
    return { name: 'Hello, World！！', isLogin:false, userData:null}

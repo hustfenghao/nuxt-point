@@ -9,7 +9,6 @@ export default {
   methods: {
     googleLogin: function() {
       firebase.auth().signInWithRedirect(new firebase.auth.GoogleAuthProvider());
-      console.log(this.isLogin);
       if(this.isLogin){
       return redirect('/shop')
       };

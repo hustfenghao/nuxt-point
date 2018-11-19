@@ -1,25 +1,17 @@
 <template>
   <section class="container">
     <div>
-      <logo/>
       <h1 class="title">
         my_app
       </h1>
       <h2 class="subtitle">
         My perfect Nuxt.js project
       </h2>
-      <div class="links">
-        <a
-          href="https://nuxtjs.org/"
-          target="_blank"
-          class="button--green">Documentation</a>
-
         <div class="links">
-          <button
-            @click="googleLogin">googleでログイン</button>
+          <button@click="googleLogin">
+          googleでログイン
+          </button>
         </div>
-      </div>
-
     </div>
   </section>
 </template>
