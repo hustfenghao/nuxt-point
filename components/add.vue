@@ -1,9 +1,5 @@
 <template>
   <div id="app">
-    <Home v-if="!isLogin"/>
-    <Mypage
-      v-if="isLogin"
-      :user="userData"/>
     <h2>ゲスト一覧</h2>
     <button  @click="showToggle">ゲスト追加</button>
     <div v-show="isShow" >
@@ -22,27 +18,9 @@
 </template>
 
 <script>
-import Home from '~/components/Home.vue'
-import Mypage from '~/components/Mypage.vue'
 import firebase from '@/plugins/firebase'
 export default {
 name: 'App',
-components: {
-  Home,
-  Mypage
-},
-mounted: function() {
-  firebase.auth().onAuthStateChanged(user => {
-    // console.log(user);
-    if (user) {
-      this.isLogin = true;
-      this.userData = user;
-    } else {
-      this.isLogin = false;
-      this.userData = null;
-    };
-  });
-},
 data () {
   return {
     database: null,

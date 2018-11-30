@@ -2,6 +2,7 @@
 <template>
   <div id="Mypage">
     <span>こんにちは, {{ user.displayName }}さん</span>
+    <p>{{ user.userData }}</p>
     <button @click="logout">ログアウト</button>
   </div>
 </template>
